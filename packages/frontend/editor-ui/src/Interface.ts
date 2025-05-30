@@ -613,6 +613,7 @@ export const enum UserManagementAuthenticationMethod {
 	Email = 'email',
 	Ldap = 'ldap',
 	Saml = 'saml',
+	Oidc = 'oidc',
 }
 
 export interface IPermissionGroup {
@@ -1533,6 +1534,7 @@ export type EnterpriseEditionFeatureKey =
 	| 'LogStreaming'
 	| 'Variables'
 	| 'Saml'
+	| 'Oidc'
 	| 'SourceControl'
 	| 'ExternalSecrets'
 	| 'AuditLogs'

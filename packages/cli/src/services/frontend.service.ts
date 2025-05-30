@@ -155,6 +155,10 @@ export class FrontendService {
 					loginEnabled: false,
 					loginLabel: '',
 				},
+				oidc: {
+					loginEnabled: false,
+					loginUrl: `${instanceBaseUrl}/${restEndpoint}/sso/oidc/login`,
+				},
 			},
 			publicApi: {
 				enabled: isApiEnabled(),
@@ -190,6 +194,7 @@ export class FrontendService {
 				sharing: false,
 				ldap: false,
 				saml: false,
+				oidc: false,
 				logStreaming: false,
 				advancedExecutionFilters: false,
 				variables: false,
@@ -323,6 +328,7 @@ export class FrontendService {
 			logStreaming: this.license.isLogStreamingEnabled(),
 			ldap: this.license.isLdapEnabled(),
 			saml: this.license.isSamlEnabled(),
+			oidc: this.licenseState.isOidcLicensed(),
 			advancedExecutionFilters: this.license.isAdvancedExecutionFiltersEnabled(),
 			variables: this.license.isVariablesEnabled(),
 			sourceControl: this.license.isSourceControlLicensed(),
@@ -348,6 +354,12 @@ export class FrontendService {
 			Object.assign(this.settings.sso.saml, {
 				loginLabel: getSamlLoginLabel(),
 				loginEnabled: config.getEnv('sso.saml.loginEnabled'),
+			});
+		}
+
+		if (this.licenseState.isOidcLicensed()) {
+			Object.assign(this.settings.sso.oidc, {
+				loginEnabled: config.getEnv('sso.oidc.loginEnabled'),
 			});
 		}
 
