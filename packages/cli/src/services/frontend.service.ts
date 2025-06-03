@@ -158,6 +158,7 @@ export class FrontendService {
 				oidc: {
 					loginEnabled: false,
 					loginUrl: `${instanceBaseUrl}/${restEndpoint}/sso/oidc/login`,
+					callbackUrl: `${instanceBaseUrl}/${restEndpoint}/sso/oidc/callback`,
 				},
 			},
 			publicApi: {
