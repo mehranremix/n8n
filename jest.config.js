@@ -21,7 +21,7 @@ const config = {
 	testPathIgnorePatterns: ['/dist/', '/node_modules/'],
 	transform: {
 		'^.+\\.ts$': ['ts-jest', tsJestOptions],
-		'node_modules/pdfjs-dist/.+\\.mjs$': [
+		'node_modules/(?!pdfjs-dist|openid-client)/.+\\.m?js$': [
 			'babel-jest',
 			{
 				presets: ['@babel/preset-env'],
